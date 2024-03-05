@@ -1,26 +1,26 @@
 import qrcode
 
 
-def generar_codigo_qr(url, nombre_archivo):
-    # Crea un objeto QRCode
-    codigo_qr = qrcode.QRCode(
+def generate_qr_code(url, file_name):
+    # Create a QRCode object
+    qr_code = qrcode.QRCode(
         version=2,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=10,
         border=4,
     )
-    # Añade la URL al código QR
-    codigo_qr.add_data(url)
-    codigo_qr.make(fit=True)
+    # Add the URL to the QR code
+    qr_code.add_data(url)
+    qr_code.make(fit=True)
 
-    # Crea una imagen del código QR
-    imagen_qr = codigo_qr.make_image(fill_color="black", back_color="white")
+    # Create an image of the QR code
+    qr_image = qr_code.make_image(fill_color="black", back_color="white")
 
-    # Guarda la imagen del código QR
-    imagen_qr.save(nombre_archivo)
+    # Save the QR code image
+    qr_image.save(file_name)
 
 if __name__ == "__main__":
-    url = input("Introduce la dirección web: ")
-    nombre_archivo = input("Introduce el nombre del archivo de imagen: ")
-    generar_codigo_qr(url, nombre_archivo)
-    print("Se ha generado el código QR correctamente.")
+    url = input("Enter the web address: ")
+    file_name = input("Enter the image file name: ")
+    generate_qr_code(url, file_name)
+    print("QR code generated successfully.")
